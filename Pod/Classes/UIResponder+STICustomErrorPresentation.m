@@ -50,7 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
 		(application == self && responderDelegateUnavailable)) {
 		// this is the default implementation of the app delegate or the
 		// application itself, if its delegate does not inherit from UIResponder.
-        [[STIErrorCoalescingQueue defaultQueue] addError:error completionHandler:completionHandler];
+        [[STIErrorCoalescingQueue defaultQueue] addError:error viewController:nil completionHandler:completionHandler];
 		
 	} else {
 		UIResponder *nextResponder = ([self nextResponder] ?: [UIApplication sharedApplication]);
@@ -76,7 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
 		if (viewController.isViewLoaded && viewController.view.window) {
 			// if the view controller's view is visible, present the error,
 			// otherwise suppress the error!
-            [[STIErrorCoalescingQueue defaultQueue] addError:error completionHandler:completionHandler];
+            [[STIErrorCoalescingQueue defaultQueue] addError:error viewController:viewController completionHandler:completionHandler];
 		} else {
 			if (completionHandler != NULL) {
 				// make sure the completion handler is always called

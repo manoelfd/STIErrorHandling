@@ -13,7 +13,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -66,7 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param completionHandler The completion handler that should be called after
                           error recovery.
  */
-- (void)addError:(NSError *)error completionHandler:(nullable void(^)(BOOL didRecover))completionHandler;
+- (void)addError:(NSError *)error viewController: (nullable UIViewController *)viewController completionHandler:(nullable void(^)(BOOL didRecover))completionHandler;
 
 @end
 

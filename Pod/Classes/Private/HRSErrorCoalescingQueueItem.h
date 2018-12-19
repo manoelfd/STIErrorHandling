@@ -13,15 +13,15 @@
 //
 
 #import <Foundation/Foundation.h>
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HRSErrorCoalescingQueueItem : NSObject
 
 @property (nonatomic, strong, readonly) NSError *error;
 @property (nonatomic, copy, nullable, readonly) void(^completionHandler)(BOOL didRecover);
+@property (nonatomic, weak, nullable, readonly) UIViewController *viewController;
 
-+ (instancetype)itemWithError:(NSError *)error completionHandler:(nullable void(^)(BOOL didRecover))completionHandler;
++ (instancetype)itemWithError:(NSError *)error viewController: (nullable UIViewController *)viewController completionHandler:(nullable void(^)(BOOL didRecover))completionHandler;
 
 @end
 

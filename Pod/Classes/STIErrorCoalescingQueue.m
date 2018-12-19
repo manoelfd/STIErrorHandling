@@ -111,15 +111,15 @@ NS_ASSUME_NONNULL_BEGIN
     }];
 }
 
-- (void)addError:(NSError *)error completionHandler:(nullable void(^)(BOOL didRecover))completionHandler {
-    HRSErrorCoalescingQueueItem *item = [HRSErrorCoalescingQueueItem itemWithError:error completionHandler:completionHandler];
+- (void)addError:(NSError *)error viewController:(nullable UIViewController *)viewController completionHandler:(nullable void(^)(BOOL didRecover))completionHandler {
+    HRSErrorCoalescingQueueItem *item = [HRSErrorCoalescingQueueItem itemWithError:error viewController:viewController completionHandler:completionHandler];
     [self enqueueItem:item];
     [self presentErrorIfPossible];
 }
 
-- (void)presentError:(NSError *)error completionHandler:(nullable void(^)(BOOL didRecover))completionHandler {
+- (void)presentError:(NSError *)error viewController:(nullable UIViewController *)viewController completionHandler:(nullable void(^)(BOOL didRecover))completionHandler {
     STIErrorPresenter *presenter = [STIErrorPresenter presenterWithError:error completionHandler:completionHandler];
-    UIViewController *presentingViewController = [STIErrorHandling sharedInstance].presentingViewController;
+    UIViewController *presentingViewController = viewController ?: [STIErrorHandling sharedInstance].presentingViewController;
     if (!presentingViewController) {
         presentingViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
     }

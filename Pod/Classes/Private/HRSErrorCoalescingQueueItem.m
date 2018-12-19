@@ -18,15 +18,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation HRSErrorCoalescingQueueItem
 
-+ (instancetype)itemWithError:(NSError *)error completionHandler:(nullable void(^)(BOOL didRecover))completionHandler {
-    return [[self alloc] initWithError:error completionHandler:completionHandler];
++ (instancetype)itemWithError:(NSError *)error viewController: (nullable UIViewController *)viewController completionHandler:(nullable void(^)(BOOL didRecover))completionHandler {
+    return [[self alloc] initWithError:error viewController:viewController completionHandler:completionHandler];
 }
 
-- (instancetype)initWithError:(NSError *)error completionHandler:(nullable void(^)(BOOL didRecover))completionHandler {
+- (instancetype)initWithError:(NSError *)error viewController: (nullable UIViewController *)viewController completionHandler:(nullable void(^)(BOOL didRecover))completionHandler {
     self = [super init];
     if (self) {
         _error = error;
         _completionHandler = [completionHandler copy];
+        _viewController = viewController;
     }
     return self;
 }
