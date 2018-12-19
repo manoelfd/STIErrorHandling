@@ -19,7 +19,7 @@
 #import "HRSErrorLocalizationHelper.h"
 #import "HRSErrorPresenterDelegate.h"
 #import "STIErrorRecoveryAttempter.h"
-
+#import "NSError+LocalizedDescriptionWithoutOperationPrefix.h"
 @interface STIErrorPresenter ()
 
 @property (nonatomic, strong, readwrite) HRSErrorPresenterDelegate *presenterDelegate;
