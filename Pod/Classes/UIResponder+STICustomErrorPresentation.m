@@ -66,6 +66,11 @@ NS_ASSUME_NONNULL_BEGIN
 		return;
 	}
 	
+	if ([self canInterceptError:error]) {
+        [self interceptError:error completionHandler:completionHandler];
+       	return;
+    }
+	
 	UIApplication *application = [UIApplication sharedApplication];
 	BOOL responderDelegateUnavailable = ![application.delegate isKindOfClass:[UIResponder class]];
     
