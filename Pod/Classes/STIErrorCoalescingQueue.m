@@ -91,7 +91,7 @@ NS_ASSUME_NONNULL_BEGIN
     
     self.presenting = YES;
     
-    [self presentError:item.error completionHandler:^(BOOL didRecover) {
+    [self presentError:item.error viewController:item.viewController completionHandler:^(BOOL didRecover) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (item.completionHandler) {
                 item.completionHandler(didRecover);

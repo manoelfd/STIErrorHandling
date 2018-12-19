@@ -89,7 +89,7 @@ NS_ASSUME_NONNULL_BEGIN
                           presentation ends. This completion handler can be
                           called on any thread.
  */
-- (void)presentError:(NSError *)error completionHandler:(nullable void(^)(BOOL didRecover))completionHandler;
+- (void)presentError:(NSError *)error viewController: (nullable UIViewController *)viewController completionHandler:(nullable void(^)(BOOL didRecover))completionHandler;
 
 @end
 
